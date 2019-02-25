@@ -1,5 +1,5 @@
-## SWYM
-Swym contains all url endpoints for application
+## JUMPER
+Jumper_food_bot contains all url endpoints for application
 
 ## Setup Guide
 
