@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+    <section class="blog-area">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-8 col-md-12">
+          <div class="blog-posts">
+            <br>
+
+            <div class="single-post">
+              <h3 class="title"><b class="light-color">Please fill your Merchant Id and Access Token (Only for Sandbox api)</b></h3>
+            </div>
+            <form action="/merchant_search" method="POST" class="form-inline my-2 my-lg-0">
+              Merchant ID <input name="merchant_id" class="form-control mr-sm-2" type="search" placeholder="Merchant ID" aria-label="Search">
+              Access Token <input name="access_token" class="form-control mr-sm-2" type="password" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <br>
+              {% if query %}
+              <p>Your <b>{{ query }}</b> query's Result is given below</p>
+              {% endif %}
+              {% if result %}
+              <p>{{ result }}</p>
+              {% endif %}
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Previous Merchants</th>
+              <th scope="col">Items link</th>
+              <th scope="col">Generate AI dialogue</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for merchant in merchants %} 
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ merchant.merchant_id }}</td>
+              <td><a style="color:#4885ed;" href="/merchant_items/{{ merchant.merchant_id }}" target='_blank'> Link! </a></td>
+              <td><a style="color:#4885ed;" href="/generate_dialogue/{{ merchant.merchant_id }}" target='_blank'> Generate </a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+

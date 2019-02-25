@@ -1,0 +1,11 @@
+flask
+mongoengine
+requests 
+flask-mongoengine
+flask-paginate
+flask-login
+flask-principal
+bcrypt
+flask-cors
+dialogflow
+python-dotenv
